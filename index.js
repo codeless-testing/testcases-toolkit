@@ -1,6 +1,7 @@
 (() => {
   // internal state -----------------------------------------------------------
   let active = false;   // starts disabled
+  const debug = true;
   let last;             // last element we highlighted
 
   // helper to turn outline on / off for the current element -----------------
@@ -19,6 +20,9 @@
 
   // click handler ------------------------------------------------------------
   const handleClick = e => {
+    if (debug){
+      console.log('Click was handled with value: ',e)
+    }
     if (!active) return;
     e.preventDefault();
     e.stopPropagation();
@@ -31,6 +35,9 @@
       outerHTML: el.outerHTML
     };
 
+    if (debug){
+      console.log('Event was sent with value: ', detail)
+    }
     document.dispatchEvent(new CustomEvent('element-selected', { detail }));
   };
 
@@ -39,6 +46,9 @@
     const { type, active: nextState } = e.data || {};
     if (type !== 'ELEMENT_PICKER_TOGGLE') return;
 
+    if (debug){
+      console.log('Picker status changed to: ', nextState)
+    }
     active = Boolean(nextState);
     if (!active) {
       // tidy up any leftover outline
