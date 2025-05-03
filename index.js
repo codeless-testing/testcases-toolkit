@@ -38,7 +38,14 @@
     if (debug){
       console.log('Event was sent with value: ', detail)
     }
-    document.dispatchEvent(new CustomEvent('element-selected', { detail }));
+
+    const msg = {
+      type: 'element-selected',
+      detail
+    };
+
+    window.parent.postMessage(msg);
+    // document.dispatchEvent(new CustomEvent('element-selected', { detail }));
   };
 
   // message handler (coming from the host page) -----------------------------
