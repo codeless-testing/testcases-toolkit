@@ -44,7 +44,7 @@
       detail
     };
 
-    window.parent.postMessage(msg);
+    window.postMessage(msg);
     // document.dispatchEvent(new CustomEvent('element-selected', { detail }));
   };
 
