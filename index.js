@@ -1,7 +1,7 @@
 (() => {
   // internal state -----------------------------------------------------------
   let active = false;   // starts disabled
-  const debug = true;
+  const debug = false;
   let last;             // last element we highlighted
 
   // helper to turn outline on / off for the current element -----------------
